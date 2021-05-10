@@ -1,36 +1,37 @@
 import { NgModule } from '@angular/core';
+import { routingModule } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { SliderComponent } from './slider/slider.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { FilmsComponent } from './films/films.component';
-import { PageComponent } from './page/page.component';
-import { HomeComponent } from './home/home.component';
-import { FormComponent } from './form/form.component';
-import { ErrorComponent } from './error/error.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { BlogComponent } from './components/blog/blog.component';
+import { SliderComponent } from './components/slider/slider.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HomeComponent } from './components/home/home.component';
+import { PageComponent } from './components/page/page.component';
+import { FilmsComponent } from './components/films/films.component';
+import { FormComponent } from './components/form/form.component';
+import { ErrorComponent } from './components/error/error.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    BlogComponent,
     SliderComponent,
     SidebarComponent,
-    FilmsComponent,
-    PageComponent,
     HomeComponent,
+    PageComponent,
+    FilmsComponent,
     FormComponent,
-    ErrorComponent,
-    FooterComponent
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    routingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

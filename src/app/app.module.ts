@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { BlogComponent } from './components/blog/blog.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './components/home/home.component';
@@ -12,6 +11,8 @@ import { PageComponent } from './components/page/page.component';
 import { FilmsComponent } from './components/films/films.component';
 import { FormComponent } from './components/form/form.component';
 import { ErrorComponent } from './components/error/error.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { BlogComponent } from './components/blog/blog.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ErrorComponent } from './components/error/error.component';
     PageComponent,
     FilmsComponent,
     FormComponent,
-    ErrorComponent
+    ErrorComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

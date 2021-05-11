@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 //importar componentes a los cuales les quiero hacer una pagina excusiva
 import { HomeComponent } from './components/home/home.component';
-import { BlogComponent } from './components/blog/blog.component';
 import { FormComponent } from './components/form/form.component';
 import { FilmsComponent } from './components/films/films.component';
 import { PageComponent } from './components/page/page.component';
 import { ErrorComponent } from './components/error/error.component';
+import { BlogComponent } from './components/blog/blog.component';
 
 //array de rutas
 const appRoutes: Routes = [

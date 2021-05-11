@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public title = 'learning-angular';
-  public homeText = "Bienvenido al curso de Angular"
 }

@@ -10,6 +10,7 @@ export class FilmsComponent implements OnInit {
 
   public title: string;
   public films: Array<Film>;
+  public favorite?: Film;
 
   constructor() {
     this.title = "Peliculas";
@@ -24,5 +25,10 @@ export class FilmsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.films);
+  }
+
+  viewFavorite(event: any){
+    console.log(event.film);
+   this.favorite = event.film;
   }
 }

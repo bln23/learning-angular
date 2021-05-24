@@ -5,8 +5,22 @@
 
 <div class="center-body">
   <section id="content">
-<!-- 
+
+    <div id="favorite-film" *ngIf="favorite">
+      <h2 class="subheader">
+        Pelicula favorita
+      </h2>
+      <h4>
+        {{favorite?.title}} 
+      </h4>
+      <h5>
+        {{favorite?.year}} 
+      </h5>
+    </div>
+
     <h2 class="subheader">Peliculas</h2>
+
+    <!-- 
     <p>
       peliculas works!
     </p>
@@ -27,7 +41,9 @@
     
     <div id="articles" *ngIf="films">
       <div *ngFor="let film of films; let i = index;">
-        <app-film [film]="film"></app-film>
+        <app-film [film]="film"
+                  (CheckFavorite)="viewFavorite($event)"
+        ></app-film>
       </div>
     </div>
 

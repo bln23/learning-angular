@@ -13,6 +13,7 @@ import { FormComponent } from './components/form/form.component';
 import { ErrorComponent } from './components/error/error.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { FilmComponent } from './components/film/film.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { BlogComponent } from './components/blog/blog.component';
     FilmsComponent,
     FormComponent,
     ErrorComponent,
-    FooterComponent
+    FooterComponent,
+    FilmComponent
   ],
   imports: [
     BrowserModule,

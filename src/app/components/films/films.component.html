@@ -5,7 +5,7 @@
 
 <div class="center-body">
   <section id="content">
-
+<!-- 
     <h2 class="subheader">Peliculas</h2>
     <p>
       peliculas works!
@@ -23,27 +23,12 @@
     {{films.length}}
     <hr>
 
-    <h2 class="subheader">Peliculas</h2>
+    <h2 class="subheader">Peliculas</h2> -->
+    
     <div id="articles" *ngIf="films">
-      <article class="article-item" *ngFor="let film of films; let i = index;">
-        <div class="image-wrap">
-          <img src="{{film.image}}" alt="{{film.title}}" />
-        </div>
-
-        <h2>{{film.title}}</h2>
-        <span class="date">
-          Hace 5 minutos
-        </span>
-
-        <span class="year" [ngClass]="{
-                         'year-beige': film.year < 1986,
-                         'year-grey': film.year > 1985
-                       }">
-          {{film.year}}
-        </span>
-        <a href="#">Leer mas</a>
-        <div class="clearfix"></div>
-      </article>
+      <div *ngFor="let film of films; let i = index;">
+        <app-film [film]="film"></app-film>
+      </div>
     </div>
 
   </section>

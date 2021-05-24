@@ -14,6 +14,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { FilmComponent } from './components/film/film.component';
+import { EsParPipe } from './pipes/espar.piper';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FilmComponent } from './components/film/film.component';
     FormComponent,
     ErrorComponent,
     FooterComponent,
-    FilmComponent
+    FilmComponent,
+    EsParPipe
   ],
   imports: [
     BrowserModule,

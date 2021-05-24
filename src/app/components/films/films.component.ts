@@ -11,6 +11,7 @@ export class FilmsComponent implements OnInit {
   public title: string;
   public films: Array<Film>;
   public favorite?: Film;
+  public date: any;
 
   constructor() {
     this.title = "Peliculas";
@@ -21,6 +22,7 @@ export class FilmsComponent implements OnInit {
       new Film("Dentro del laberinto", 1986, "https://cinergetica.com.mx/wp-content/uploads/2016/01/laberinto-jennifer-connelly-david-bowie.jpg" ),
       new Film("La historia interminable", 1984, "https://cronicaglobal.elespanol.com/uploads/s1/88/50/33/6/ende1.jpeg")
     ];
+    this.date = new Date(2020, 8, 12);
    }
 
   ngOnInit(): void {

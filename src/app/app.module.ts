@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { routingModule } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
+ 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SliderComponent } from './components/slider/slider.component';
@@ -35,7 +36,8 @@ import { EsParPipe } from './pipes/espar.piper';
   ],
   imports: [
     BrowserModule,
-    routingModule
+    routingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -8,17 +8,32 @@ import { Component, OnInit } from '@angular/core';
 export class FormComponent implements OnInit {
 
   public user: any;
+  public field: string;
 
   constructor() { 
     this.user = {
       name: '',
       lastname: '',
-      bio: '',
+      biografy: '',
       gender: ''
     }
+    this.field = '';
   }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(){
+    alert("Formulario enviado");
+    console.log(this.user);
+  }
+
+  hasClickGiven(){
+    alert('has dado click');
+  }
+
+  haveLeft(){
+    alert('Has salido');
   }
 
 }

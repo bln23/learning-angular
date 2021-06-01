@@ -41,6 +41,7 @@
     <h2 class="subheader">Eventos</h2>
     <button (click)="hasClickGiven()">Dale click</button>
     <input type="text" [(ngModel)]="field" (blur)="haveLeft()"/>
+    <input type="text" [(ngModel)]="field" (keyup.enter)="havePush()"/>
     {{field}}
   </section>
 

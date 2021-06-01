@@ -36,4 +36,7 @@ export class FormComponent implements OnInit {
     alert('Has salido');
   }
 
+  havePush(){
+    alert("has pulsado enter");
+  }
 }

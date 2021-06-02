@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Film } from '../../models/film';
+import { FilmService } from '../../services/film.service';
 
 @Component({
   selector: 'app-films',
   templateUrl: './films.component.html',
-  styleUrls: ['./films.component.css']
+  styleUrls: ['./films.component.css'],
+  providers: [FilmService]
 })
 export class FilmsComponent implements OnInit {
 
@@ -13,7 +15,9 @@ export class FilmsComponent implements OnInit {
   public favorite?: Film;
   public date: any;
 
-  constructor() {
+  constructor(
+    private _filmService: FilmService
+  ) {
     this.title = "Peliculas";
     this.films = [
       new Film("Regreso al futuro", 1985, "http://www.mexmads.com/wp-content/uploads/2020/07/35-anos-back-to-the-future.jpg"),
@@ -27,6 +31,7 @@ export class FilmsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.films);
+    console.log(this._filmService.helloWorld());
   }
 
   viewFavorite(event: any){

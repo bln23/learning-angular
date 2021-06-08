@@ -2,6 +2,7 @@
 
 const validator = require("validator");
 const Article = require('../models/article');
+const { request } = require("../routes/article");
 
 const controller = {
 
@@ -34,14 +35,29 @@ const controller = {
             if (validate_title && validate_content){
 
                 //crear el objeto a guardar
+                const article = new Article();
 
                 //asignar valores
+                article.title = params.title;
+                article.content = params.content;
+                article.image = null;
 
                 //guardar el articulo
+                article.save((error, articleStored) => {
+
+                    if(error || !articleStored){
+                        return request.status(400).send({
+                            status: 'error',
+                            message: 'El articulo no se ha guardado'
+                        });
+                    }
+
+                });
 
                 //devolver una respuesta
                 return response.status(200).send({
-                   article: params
+                    status: 'succes',
+                    article
                 });
             }
             return response.status(200).send({
@@ -53,7 +69,35 @@ const controller = {
                 message: 'Faltan datos por enviar'
             });
         }
+    },
+
+    getArticles: (request, response) => {
+        // find
+
+        Article.find({}).sort('-_id').exec((err, articles) => {
+
+            if (err){
+                return response.status(500).send({
+                    status: 'error',
+                    message: 'error al devolver los articulos'
+                });
+            }
+
+            if (!articles){
+                return response.status(404).send({
+                    status: 'error',
+                    message: 'No hay articulos para mostrar'
+                });
+            }
+
+            return response.status(200).send({
+                status: 'success',
+                articles
+            });
+        });
     }
-}
+
+
+};
 
 module.exports = controller;

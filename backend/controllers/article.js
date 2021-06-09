@@ -72,18 +72,26 @@ const controller = {
     },
 
     getArticles: (request, response) => {
+        const query = Article.find({})
+
+        const last = request.params.last;
+        if(last || last != undefined){
+            query.limit(5);
+        }
+
+
         // find
 
-        Article.find({}).sort('-_id').exec((err, articles) => {
+        query.sort('-_id').exec((err, articles) => {
 
-            if (err){
+            if(err){
                 return response.status(500).send({
                     status: 'error',
                     message: 'error al devolver los articulos'
                 });
             }
 
-            if (!articles){
+            if(!articles){
                 return response.status(404).send({
                     status: 'error',
                     message: 'No hay articulos para mostrar'
@@ -95,9 +103,98 @@ const controller = {
                 articles
             });
         });
+    },
+
+    getArticle: (request, response) => {
+
+        // recoger el id de la url
+
+        const articleId = request.params.id;
+
+        //comprobar que existe
+        if(!articleId || articleId == null){
+            return response.status(404).send({
+                status: 'error',
+                message: 'no existe el articulooo'
+            });
+        }
+
+        //buscar el articulo
+        Article.findById(articleId, (error, article) => {
+
+            if(error || !article){
+                return response.status(404).send({
+                    status: 'error',
+                    message: 'no existe el articulo'
+                });
+            }
+
+            return response.status(200).send({
+                status: 'success',
+                article
+            });
+        });  
+    },
+
+    update: (request, response) => {
+
+        //recoger el id del articulo que viene por la url
+        const articleId= request.params.id;
+
+        //recoger los datos que llegan por put
+        const params = request.body;
+
+        //validar los datos
+        try {
+
+            let validate_title = !validator.isEmpty(params.title);
+            let validate_content = !validator.isEmpty(params.content);
+
+            if(validate_title && validate_content){
+                //find and update
+                Article.findOneAndUpdate(
+                    {_id: articleId},
+                    params,
+                    {new:true},
+                    (err, articleUpdated) => {
+                        if(err){
+                            return response.status(500).send({
+                                status: 'error',
+                                message: 'error al actualizar'
+                            });
+                        }
+
+                        if(!articleUpdated){
+                            return response.status(404).send({
+                                status: 'error',
+                                message: 'no existe el articulo'
+                            });
+                        }
+
+                        return response.status(200).send({
+                            status: 'sucess',
+                            article: articleUpdated
+                        });
+                        
+                    });
+            }else{
+                //devolver respuesta
+                return response.status(200).send({
+                    status: 'error',
+                    message: 'la validacion no es correcta'
+                });
+            }
+
+
+        }catch(error){
+            return response.status(200).send({
+                status: 'error',
+                message: 'faltan datos por enviar'
+            });
+        }
+
     }
-
-
 };
+
 
 module.exports = controller;
